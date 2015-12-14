@@ -1,0 +1,9 @@
+<tyre>
+	<reference></reference>
+	<vehiculeType></vehiculeType>
+	<patern>
+		<height></height>
+		<width></width>
+		<thickness></thickness>
+	</patern>
+</tyre>
