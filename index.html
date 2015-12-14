@@ -8,56 +8,7 @@
 <body>
 	<h1>Michelin</h1>
 	<p>https://github.com/benIT/angular.git</p>
-	<list>
-		<tyre>
-			<reference>reference1</reference>
-			<vehiculeType>vehiculeType1</vehiculeType>
-			<pattern>
-				<heigth>heigth1</heigth>
-				<width>width1</width>
-				<thickness>thickness1</thickness>
-			</pattern>
-			<other>other</other>
-			<event action="add">+</event>
-			<event action="remove">-</event>
-
-		</tyre>
-		<tyre>
-			<reference>reference2</reference>
-			<vehiculeType>vehiculeType2</vehiculeType>
-			<pattern>
-				<heigth>heigth2</heigth>
-				<width>width2</width>
-				<thickness>thickness2</thickness>
-			</pattern>
-			<other>other</other>
-			<event action="add">+</event>
-			<event action="remove">-</event>
-		</tyre>
-		<tyre>
-			<reference>reference3</reference>
-			<vehiculeType>vehiculeType3</vehiculeType>
-			<pattern>
-				<heigth>heigth3</heigth>
-				<width>width3</width>
-				<thickness>thickness3</thickness>
-			</pattern>
-			<other>other3</other>
-			<event action="add">+</event>
-			<event action="remove">-</event>
-		</tyre>
-		<tyre>
-			<reference>reference4</reference>
-			<vehiculeType>vehiculeType4</vehiculeType>
-			<pattern>
-				<heigth>heigth4</heigth>
-				<width>width4</width>
-				<thickness>thickness4</thickness>
-			</pattern>
-			<other>other4</other>
-			<event action="add">+</event>
-			<event action="remove">-</event>
-		</tyre>
+<list>
 		<tyre>
 			<reference>reference5</reference>
 			<vehiculeType>vehiculeType5</vehiculeType>
@@ -69,6 +20,19 @@
 			<other>other5</other>
 			<event action="add">+</event>
 			<event action="remove">-</event>
+			<event action="edit">EDIT</event>
+		</tyre>
+
+		<tyre class="form" id ="form">
+			<label for="referenceLabel">reference :</label>
+			<input id="reference" type="text" name="reference" placeholder="reference">
+			<label for="vehiculeTypeLabel">Vehicule type :</label>
+			<input id="vehiculeType" type="text" name="vehiculeType" placeholder="vehicule">
+			<label for="heigthLabel">heigth :</label>
+			<input id="heigth" type="text" name="heigth" placeholder="heigth">
+			<label for="widthLabel">width :</label>
+			<input id="width" type="text" name="width" placeholder="width">
+			<event action="save">SAVE</event>
 		</tyre>
 	</list>
 	<script type="text/javascript" src="js/lib.js"></script>
