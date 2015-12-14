@@ -21,7 +21,6 @@ save('event[action="save"]','click', function () {
 	var iDiv = document.createElement('tyre');
 	document.getElementsByTagName('list')[0].appendChild(iDiv);
 
-	// Now create and append to iDiv
 	var innerDiv = document.createElement('reference');
 	innerDiv.innerText = $('#reference')[0].value;
 
@@ -34,13 +33,26 @@ save('event[action="save"]','click', function () {
 	var innerDiv4 = document.createElement('width');
 	innerDiv4.innerText = $('#width')[0].value;
 
-	var innerDiv5 = document.createElement(' thickness');
+	var innerDiv5 = document.createElement('thickness');
 	innerDiv5.innerText = $('#heigth')[0].value;
 
-	// The variable iDiv is still good... Just append to it.
+	var innerDiv6 = document.createElement("event");
+	innerDiv6.setAttribute("action", "add");
+	innerDiv6.innerText = '+';
+
+	var innerDiv7 = document.createElement("event");
+	innerDiv6.setAttribute("action", "remove");
+	innerDiv6.innerText = '-';
+	//innerDiv6.innerText = $('#heigth')[0].value;
+
 	iDiv.appendChild(innerDiv);
 	iDiv.appendChild(innerDiv2);
 	iDiv.appendChild(innerDiv3);
 	iDiv.appendChild(innerDiv4);
 	iDiv.appendChild(innerDiv5);
+	iDiv.appendChild(innerDiv6);
+	iDiv.appendChild(innerDiv7);
+
+
+
 });
