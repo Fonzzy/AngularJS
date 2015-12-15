@@ -1,11 +1,11 @@
 list {
-	display: block;
+	display: grid;
 	width: 100%;
-	padding-top:30px;
 }
 
 tyre {
-	display: block;
+	/* margin: 30px; */
+	display: inline-table;
 	border-color: grey;
 	border-style: solid;
 	border-width: 1px;
@@ -14,19 +14,15 @@ tyre {
 	margin-top: 10px;
 	padding-top:5px;
 	padding-bottom:5px;
-	width: 80%;
-	margin-left: 10%;
+	width: 50%;
 }
 /*get first children*/
 tyre > * {
 	margin-left: 15px;
 }
 
-pattern > * {
-	margin-left: 5px;
-}
 
-event{
+event[action='add'], event[action='remove']{
 	cursor: pointer;
 	width: 20px;
 	display: inline-block;
@@ -38,13 +34,22 @@ event{
 }
 
 event[action='edit'], event[action='save'] {
+	cursor: pointer;
 	width: 100px;
-	background-color: blue;
+	display: inline-block;
+	color: white;
+	border-radius: 10px;
+	text-align: center;
+	float: right;
+	margin-right: 5px;
 }
 
 event[action='add'] {
 	background-color: green;
-	margin-right: 10%;
+}
+
+event[action='edit'] {
+	background-color: blue;
 }
 
 event[action='save'] {
