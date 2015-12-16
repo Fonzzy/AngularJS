@@ -1,18 +1,14 @@
-// var elements = ['reference', 'vehiculeType', 'pattern_height','pattern_width','pattern_thickness','other'];
-// var initEve = ['click'];
-
-// (function(){
-// 	modis.inject('controller','add')();
-// 	modis.inject('controller','save')();	
-// })();
-
-var imports = ['ngRoute'];
-
+// Imports modules dependencies
+var imports = ['ngRoute', 'ngResource'];
 var modis = angular.module('modis', imports);
 
-modis.config(['$routeProvider', function($routeProvider){
+// app configuration
+modis.config(['$routeProvider', function ($routeProvider) {
+
 	$routeProvider.when('/', {
-		templateUrl: 'partials/tyres.tpl',
+        templateUrl: 'partials/tyres.tpl',
         controller: 'TyresController'
-	});
+  	});
+
 }]);
+
