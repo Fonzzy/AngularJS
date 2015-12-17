@@ -1,51 +1,34 @@
+'use strict';
+
 // Imports modules dependencies
-var imports = ['ngRoute', 'ngResource', 'filters', 'ui.router'];
+var imports = ['ngRoute', 'ngResource', 'ui.router', 'tyres', 'pascalprecht.translate'];
 var modis = angular.module('modis', imports);
 
 // app configuration
-modis.config(function ($stateProvider, $urlRouterProvider) {
+modis.config(function ($stateProvider, $urlRouterProvider, $translateProvider, $translatePartialLoaderProvider) {
+    $translateProvider.preferredLanguage('en');
+
+    $translatePartialLoaderProvider.addPart('i18n');
+    $translateProvider.useLoader('$translatePartialLoader', {
+        urlTemplate: '/{part}/{lang}.json'
+    }); 
+
 
 	$stateProvider.state('home',{
 		url:'/',
         views : {
         	'tyres' : {
-        		templateUrl: 'partials/list.tpl',
-        		controller: 'ListTyresController' 
+        		template: function(){
+        			console.log('Affichage de la page index');
+        			return 'message d\'acceuil';
+        		},
+        		controller: 'Home' 
         	}
         },             
-  	})
+  	})	
 
-  	$stateProvider.state('tyres',{
-  		url: '/:action',
-        views : {        	
-        	'tyres': {
-        		templateUrl: 'partials/tyres.tpl',        		
-        		controller: 'ListTyresController'
-        	},
-	    	'list@tyres': {
-	    		templateUrl: 'partials/list.tpl',
-	    		controller: 'ListTyresController' 
-	    	 },
-        },         
-  	})
-  	.state('tyres.subview', {
-  		url:'/:key',
-	    views: {
-	    	'form': {
-	    		templateUrl: 'partials/addTyre.tpl',
-	    		controller: 'ManageTyresController'  
-	    	}
-	    },	      
-	})
-  	.state('tyres.subviewadd', {
-	    views: {
-	    	'form': {
-	    		templateUrl: 'partials/addTyre.tpl',
-	    		controller: 'ManageTyresController'  
-	    	}
-	    },	      
-	})
-
-  	$urlRouterProvider.otherwise('/');
+  	$urlRouterProvider.otherwise('/');  
+   
+   
 });
 
