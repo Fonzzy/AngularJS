@@ -1,6 +1,6 @@
 'use strict';
 
-modis.controller('ListTyresController', ['$scope','TyresService', function ($scope, TyresService) {
+modis.controller('ListTyresController', ['$scope', '$state', 'TyresService', function ($scope, $state, TyresService) {
 	$scope.tyre = {pattern:{}};
 	$scope.readable = false;
 	$scope.displayForm = false;
@@ -9,7 +9,7 @@ modis.controller('ListTyresController', ['$scope','TyresService', function ($sco
 		$scope.tyres = JSON.parse(sessionStorage.getItem("tyres"));
 		if(!$scope.tyres){
 			TyresService.query(function(response){
-				$scope.tyres = response;
+				$scope.tyres = response[0];
 				sessionStorage.setItem('tyres', JSON.stringify($scope.tyres));
 			});
 		}
@@ -24,32 +24,30 @@ modis.controller('ListTyresController', ['$scope','TyresService', function ($sco
 		}
 		$scope.displayForm = false;
 		$scope.tyre = {pattern:{}};
+		$state.go('home');
 	};
-
-	$scope.showAddTyre =  function(){
-		$scope.readable = false;
-		$scope.displayForm = true;
-	};	
 }]);
 
 
 modis.controller('ManageTyresController', ['$scope',
 										   '$controller',
-										   '$routeParams', 
+										   '$stateParams', 
+										   '$state',
 										   'TyresService', function ($scope, 
 										   							 $controller,
-										   							 $routeParams, 
+										   							 $stateParams,
+										   							 $state, 
 										   							 TyresService) {
 	// controller inheritance
 	$controller("ListTyresController", {$scope : $scope});
 
-	if($routeParams['action'] == "delete"){
-		delete $scope.tyres[$routeParams['key']];
+	if($stateParams['action'] == "delete"){
+		delete $scope.tyres[$stateParams['key']];
 		sessionStorage.setItem('tyres', JSON.stringify($scope.tyres));
-	} else if($routeParams['action'] == "edit"){
+		$state.go('home');
+	} else if($stateParams['action'] == "edit"){
 		$scope.readable = true;
-		$scope.displayForm = true;
-		$scope.tyre = angular.copy($scope.tyres[$routeParams['key']]);
+		$scope.tyre = angular.copy($scope.tyres[$stateParams['key']]);
 	}
 	
 }]);
